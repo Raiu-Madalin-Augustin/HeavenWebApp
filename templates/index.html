@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Sharing Application</title>
+</head>
+<body>
+    <h1>Recipe Sharing Application</h1>
+    <form action="/api/recipes" method="post" enctype="multipart/form-data">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required><br><br>
+        <label for="ingredients">Ingredients:</label>
+        <textarea id="ingredients" name="ingredients" required></textarea><br><br>
+        <label for="steps">Steps:</label>
+        <textarea id="steps" name="steps" required></textarea><br><br>
+        <label for="image">Image:</label>
+        <input type="file" id="image" name="image" accept="image/*" required><br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <hr>
+    <h2>Recipes</h2>
+    <div id="recipes"></div>
+    <script>
+        async function fetchRecipes() {
+            const response = await fetch('/api/recipes');
+            const recipes = await response.json();
+            const recipesDiv = document.getElementById('recipes');
+            recipesDiv.innerHTML = '';
+            recipes.forEach(recipe => {
+                const recipeDiv = document.createElement('div');
+                recipeDiv.innerHTML = `
+                    <h3>${recipe.Title}</h3>
+                    <p><strong>Ingredients:</strong> ${recipe.Ingredients}</p>
+                    <p><strong>Steps:</strong> ${recipe.Steps}</p>
+                    <img src="${recipe.ImageURL}" alt="${recipe.Title}" width="128">
+                `;
+                recipesDiv.appendChild(recipeDiv);
+            });
+        }
+        window.onload = fetchRecipes;
+    </script>
+</body>
+</html>
