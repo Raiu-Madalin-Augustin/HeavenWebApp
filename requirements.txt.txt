@@ -1,0 +1,5 @@
+flask
+azure-data-tables
+azure-storage-blob
+werkzeug
+pillow
