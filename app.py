@@ -8,9 +8,9 @@ import datetime
 app = Flask(__name__)
 
 # Configuration
-AZURE_STORAGE_CONNECTION_STRING = os.getenv("AZURE_STORAGE_CONNECTION_STRING")
-AZURE_STORAGE_ACCOUNT_NAME = os.getenv("AZURE_STORAGE_ACCOUNT")
-AZURE_STORAGE_ACCOUNT_KEY = os.getenv("AZURE_STORAGE_ACCOUNT_KEY")
+AZURE_STORAGE_CONNECTION_STRING = os.getenv("DefaultEndpointsProtocol=https;AccountName=heavenstorage;AccountKey=CgnCARmiqsCQ/4WcoF/JR9Vvs+rabrtjCqnj1e+xCmMijWRgA3es34XvgU30gcReFIKm9iesBpeZ+ASt2V3zRQ==;EndpointSuffix=core.windows.net")
+AZURE_STORAGE_ACCOUNT_NAME = os.getenv("heavenstorage")
+AZURE_STORAGE_ACCOUNT_KEY = os.getenv("CgnCARmiqsCQ/4WcoF/JR9Vvs+rabrtjCqnj1e+xCmMijWRgA3es34XvgU30gcReFIKm9iesBpeZ+ASt2V3zRQ==")
 TABLE_NAME = "Recipes"
 BLOB_CONTAINER_NAME = "original-images"
 RESIZED_BLOB_CONTAINER_NAME = "resized-images"
